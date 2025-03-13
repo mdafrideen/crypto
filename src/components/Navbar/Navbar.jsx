@@ -3,9 +3,11 @@ import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import arrow_icon from "../../assets/arrow_icon.png";
 import { CoinContext } from "../../context/CoinContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const { setCurrency } = useContext(CoinContext);
+  const navigate = useNavigate(); // Hook for programmatic navigation
 
   const currencyHandler = (event) => {
     switch (event.target.value) {
@@ -27,6 +29,11 @@ const Navbar = () => {
       }
     }
   };
+
+  const handleSignUp = () => {
+    navigate("/signup"); // Redirect to the signup page
+  };
+
   return (
     <div className="navbar">
       <Link to={"/"}>
@@ -34,7 +41,6 @@ const Navbar = () => {
       </Link>
       <ul>
         <Link to={"/"}>
-          
           <li>Home</li>
         </Link>
         <li>Features</li>
@@ -47,8 +53,7 @@ const Navbar = () => {
           <option value="eur">EUR</option>
           <option value="inr">INR</option>
         </select>
-        <button>
-          {" "}
+        <button onClick={handleSignUp}>
           <img src={arrow_icon} alt="" />
           Sign up
         </button>

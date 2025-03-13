@@ -7,7 +7,6 @@ const Home = () => {
   const { allCoin, currency } = useContext(CoinContext);
   const [input, setInput] = useState("");
   const [displayCoin, setDisplayCoin] = useState([]);
-  
 
   const inputHandler = (event) => {
     setInput(event.target.value);
@@ -69,7 +68,7 @@ const Home = () => {
         {displayCoin.slice(0, 10).map(
           (
             item,
-            index // Changed `Item` to `item`
+            index 
           ) => (
             <Link to={`/coin/${item.id}`} className="table-layout" key={index}>
               <p>{item.market_cap_rank}</p>
